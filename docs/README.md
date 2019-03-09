@@ -34,11 +34,11 @@ First, create a [named volume](https://docs.docker.com/storage/volumes/) that wi
 
 Next, start the container with a simple volume mount:
 
-	$ docker run -v xvfb_x11:/tmp/.X11-unix kcollins/xvfb:latest
+	$ docker run -d -v xvfb_x11:/tmp/.X11-unix kcollins/xvfb:latest
 
 Start your Ignition Gateway, sharing that same volume (keep in mind that this example doesn't use a volume for the gateway data itself and should be considered as just a simple example to demonstrate usage):
 
-	$ docker run -p 8088:8088 -v xvfb_x11:/tmp/.X11-unix kcollins/ignition:latest
+	$ docker run -d -p 8088:8088 -v xvfb_x11:/tmp/.X11-unix kcollins/ignition:latest
 
 Finally, open the configuration section of the Gateway webpage and go to the _Mobile->Settings_ area.  In the Environment Variables section, put `DISPLAY=:8` and save the changes.
 
